@@ -20,24 +20,24 @@ Rails.application.config.root = Rails.root
 
 Rails::Generators.configure! Rails.application.config.generators
 
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 def copy_routes
   routes = File.expand_path(File.join(File.dirname(__FILE__), 'fixtures', 'routes.rb'))
-  destination = File.join(Rails.root, "config")
+  destination = File.join(Rails.root, 'config')
   FileUtils.mkdir_p(destination)
   FileUtils.cp File.expand_path(routes), destination
 end
 
 def assert_class(klass, content)
   assert content =~ /class #{klass}(\(.+\))?(.*?)\nend/m, "Expected to have class #{klass}"
-  yield $2.strip if block_given?
+  yield Regexp.last_match(2).strip if block_given?
 end
 
 def generator_list
   {
-    rails: ['scaffold', 'controller', 'mailer'],
-    slim: ['scaffold', 'controller', 'mailer']
+    rails: %w[scaffold controller mailer],
+    slim: %w[scaffold controller mailer]
   }
 end
 
@@ -61,6 +61,6 @@ def require_generators(generator_list)
     end
   end
 end
-alias :require_generator :require_generators
+alias require_generator require_generators
 
 require_generators generator_list

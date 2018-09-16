@@ -15,8 +15,9 @@ module Slim
       hook_for :form_builder, as: :scaffold
 
       protected
+
       def available_views
-        ['index', 'edit', 'show', 'new', '_form']
+        %w[index edit show new _form]
       end
 
       def handler

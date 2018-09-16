@@ -6,12 +6,13 @@ module Slim
       source_root File.expand_path(File.join('..', 'templates'), __FILE__)
 
       protected
+
       def format
         :text
       end
 
       def formats
-        [:text, :html]
+        %i[text html]
       end
 
       def handler

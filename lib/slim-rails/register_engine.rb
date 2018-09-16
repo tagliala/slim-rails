@@ -25,12 +25,12 @@ module Slim
           app.assets.register_engine('.slim', Slim::Template)
         end
 
-        def _register_engine(config)
+        def _register_engine(config) # rubocop:disable Metrics/MethodLength
           return unless config.respond_to?(:assets)
 
           config.assets.configure do |env|
             if env.respond_to?(:register_transformer) && Sprockets::VERSION.to_i > 3
-              env.register_mime_type 'text/slim', extensions: ['.slim', '.slim.html']#, charset: :html
+              env.register_mime_type 'text/slim', extensions: ['.slim', '.slim.html'] # , charset: :html
               env.register_transformer 'text/slim', 'text/html', RegisterEngine::Transformer
             elsif env.respond_to?(:register_engine)
               args = ['.slim', Slim::Template]

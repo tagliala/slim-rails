@@ -27,7 +27,7 @@ module Slim
                 require 'action_view/dependency_tracker'
                 ActionView::DependencyTracker.register_tracker :slim, ActionView::DependencyTracker::ERBTracker
               end
-            rescue
+            rescue StandardError # rubocop:disable Lint/HandleExceptions
               # likely this version of Rails doesn't support dependency tracking
             end
           end

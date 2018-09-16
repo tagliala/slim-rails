@@ -6,10 +6,10 @@ module Slim
       source_root File.expand_path(File.join('..', 'templates'), __FILE__)
 
       protected
+
       def handler
         :slim
       end
-
     end
   end
 end

@@ -1,0 +1,27 @@
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.0
+  Exclude:
+    - 'vendor/bundle/**/*'
+    - 'tmp/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/LineLength:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
